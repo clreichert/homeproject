@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import math
+import time
 
 
 #flag to indicate if we are actively tracing a capture
@@ -120,6 +121,11 @@ while(cap.isOpened()):
 						trace = cv2.resize(trace, (64,64))
 						#For debugging, show the trace output
 						cv2.imshow('trace', trace)
+						
+						#sample image writing code
+						filename = 'images\\trace-' + str(time.time()).replace(".","-") + '.png'
+						cv2.imwrite(filename, trace)
+
 				
 				#Since the trace is over, reset the tracing flag
 				tracing=False
